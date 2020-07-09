@@ -10,8 +10,8 @@ app.set('views', patch.join(__dirname, 'src', 'views'));
 app.set('view engine', 'pug');
 
 //Routes
-const usersRoutes = require('./src/routes/users_routes');
-app.use(usersRoutes);
+
+app.use(require('./src/routes/users_routes'));
 
 //Server running
 
