@@ -11,7 +11,7 @@ app.set('view engine', 'pug');
 
 //Routes
 
-app.use(require('./src/routes/users_routes'));
+app.use(require('./src/routes/trades_routes'));
 
 //Server running
 
