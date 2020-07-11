@@ -1,10 +1,12 @@
-//
-//
+//Whit this code we'll get  BTC/USD rate from https://tradeblock.com and users
+//(first 50 Sellers and buyers) from https://localbitcoins.com with active offers
+
 const axios = require('axios');
 const baseUrl = `https://localbitcoins.com/`;
 
 module.exports = {
   getRates: function () {
+    // At this moment I dont know if this is the best way to get and export obtained values
     return Promise.all([
       axios.get(`${baseUrl}buy-bitcoins-online/CO/colombia/.json`),
       axios.get(`${baseUrl}sell-bitcoins-online/VE/Venezuela/.json`),
