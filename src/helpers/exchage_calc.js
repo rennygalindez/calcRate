@@ -21,6 +21,7 @@ module.exports = function exchange_calc(advs_buy, advs_sell, xbx_price) {
             trade_count: adv_buy.data.profile.trade_count,
             feedback_score: adv_buy.data.profile.feedback_score,
             public_view: adv_buy.actions.public_view,
+            bank_name: adv_buy.data.bank_name,
             min_amount: new Intl.NumberFormat('co-CO', {
               style: 'currency',
               currency: 'COP',
@@ -31,6 +32,7 @@ module.exports = function exchange_calc(advs_buy, advs_sell, xbx_price) {
             trade_count: adv_sell.data.profile.trade_count,
             feedback_score: adv_sell.data.profile.feedback_score,
             public_view: adv_sell.actions.public_view,
+            bank_name: adv_sell.data.bank_name,
             min_amount: new Intl.NumberFormat('ve-VE', {
               style: 'currency',
               currency: 'VEN',
