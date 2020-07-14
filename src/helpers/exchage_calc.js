@@ -1,42 +1,26 @@
-module.exports = function exchange_calc(advs_buy, advs_sell, xbx_price) {
+const possible = require('../helpers/is_possible_trade');
+const sellerFiller = require('./seller_filler');
+const buyerFiller = require('./buyer_filler');
+const cop_to_bsf_rate = require('../helpers/get_exchance_rate_cop_to_bsf.js');
+
+module.exports = function exchange_calc(advs_sell, advs_buy, xbx_price) {
   try {
     let trades = [];
     let id = 1;
-    advs_buy.forEach((adv_buy) => {
-      if (adv_buy.data['temp_price'] === adv_buy.data['temp_price_usd']) return; // Jump the iteration because the will wrong!
-      const trade = { id, sellers: [] };
-      trade['buyer'] = {
-        name: adv_buy.data.profile.username,
-        trade_count: adv_buy.data.profile.trade_count,
-        feedback_score: adv_buy.data.profile.feedback_score,
-        public_view: adv_buy.actions.public_view,
-        bank_name: adv_buy.data.bank_name,
-        min_amount: new Intl.NumberFormat('co-CO', {
-          style: 'currency',
-          currency: 'COP',
-        }).format(adv_buy.data.min_amount),
-      };
-      advs_sell.forEach((adv_sell) => {
-        if (adv_sell.data['temp_price'] === adv_sell.data['temp_price_usd'])
+    advs_sell.forEach((adv_sell) => {
+      if (adv_sell.data['temp_price'] === adv_sell.data['temp_price_usd'])
+        return; // Jump the iteration because the will wrong!
+      const trade = { id, buyers: [] };
+      trade['seller'] = sellerFiller(adv_sell);
+      advs_buy.forEach((adv_buy) => {
+        if (adv_buy.data['temp_price'] === adv_buy.data['temp_price_usd'])
           return; // Jump the iteration because the will wrong!
-        let usd_buy = adv_buy.data.temp_price / xbx_price;
-        let usd_seller = adv_sell.data.temp_price / xbx_price;
-        let exchange_rate_to_bsf = usd_buy / usd_seller;
-        trade['sellers'].push({
-          name: adv_sell.data.profile.username,
-          trade_count: adv_sell.data.profile.trade_count,
-          feedback_score: adv_sell.data.profile.feedback_score,
-          public_view: adv_sell.actions.public_view,
-          bank_name: adv_sell.data.bank_name,
-          min_amount: new Intl.NumberFormat('ve-VE', {
-            style: 'currency',
-            currency: 'VEN',
-          }).format(adv_sell.data.min_amount),
-          usd_buy,
-          usd_seller,
-          exchange_rate_to_bsf,
-        });
-        console.log(trade);
+        let exchange_rate_to_bsf = cop_to_bsf_rate(
+          adv_sell,
+          adv_buy,
+          xbx_price
+        );
+        trade['buyers'].push(buyerFiller(adv_buy, exchange_rate_to_bsf));
       });
       trades.push(trade);
       ++id;
@@ -46,3 +30,8 @@ module.exports = function exchange_calc(advs_buy, advs_sell, xbx_price) {
     console.log(error);
   }
 };
+
+//if (!possible.is_possible_trade(500000, adv_buy, advs_buy)) return;
+//   let filtered_advs_sell = advs_sell.filter(
+// (elements) => elements.data.min_amount <= 500000
+// );
