@@ -10,7 +10,7 @@ html(lang="en")
             each trade in trades
                 .alert.alert-primary
                     p
-                        a(class="btn btn-primary" data-toggle="collapse" href=`#collapseExample${trade.id}` role="button" aria-expanded="false" aria-controls="collapseExample") #{trade.seller.name}
+                        a(class="btn btn-primary" data-toggle="collapse" href=`#collapseExample${trade.id}` role="button" aria-expanded="false" aria-controls="collapseExample") #{trade.seller.username}
                     table(class='table table-responsive-sm table-striped')
                             tr
                                 th Minimo
@@ -20,7 +20,7 @@ html(lang="en")
                                 td #{trade.seller.min_amount}
                                 td #{trade.seller.bank_name}
                                 td 
-                                        a(class="btn btn-warning" href=`${trade.seller.public_view}`) Hacer Compra...
+                                        a(class="btn btn-warning" href=`${trade.seller.link}`) Hacer Compra...
                     div(class="collapse" id=`collapseExample${trade.id}`)
                         table(class='table table-responsive-sm table-striped')
                             th Comprador
@@ -30,12 +30,12 @@ html(lang="en")
                             th Venderle
                             each buyer in trade.buyers
                                 tr
-                                    td(scope="col") #{buyer.name}
+                                    td(scope="col") #{buyer.username}
                                     td(scope="col") #{buyer.min_amount}
                                     td(scope="col") #{buyer.bank_name}
                                     td(scope="col") #{buyer.exchange_rate_to_bsf}
                                     td(scope="col") 
-                                        a(class="btn btn-success" href=`${buyer.public_view}`) Hacer venta...
+                                        a(class="btn btn-success" href=`${buyer.link}`) Hacer venta...
                                     
 
 
