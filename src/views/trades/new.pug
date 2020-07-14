@@ -10,17 +10,17 @@ html(lang="en")
             each trade in trades
                 .alert.alert-primary
                     p
-                        a(class="btn btn-primary" data-toggle="collapse" href=`#collapseExample${trade.id}` role="button" aria-expanded="false" aria-controls="collapseExample") #{trade.buyer.name}
+                        a(class="btn btn-primary" data-toggle="collapse" href=`#collapseExample${trade.id}` role="button" aria-expanded="false" aria-controls="collapseExample") #{trade.seller.name}
                     table(class='table table-responsive-sm table-striped')
                             tr
                                 th Minimo
                                 th Banco
                                 th Comprarle...
                             tr
-                                td #{trade.buyer.min_amount}
-                                td #{trade.buyer.bank_name}
+                                td #{trade.seller.min_amount}
+                                td #{trade.seller.bank_name}
                                 td 
-                                        a(class="btn btn-warning" href=`${trade.buyer.public_view}`) Hacer Compra...
+                                        a(class="btn btn-warning" href=`${trade.seller.public_view}`) Hacer Compra...
                     div(class="collapse" id=`collapseExample${trade.id}`)
                         table(class='table table-responsive-sm table-striped')
                             th Comprador
@@ -28,14 +28,14 @@ html(lang="en")
                             th Banco
                             th Tasa
                             th Venderle
-                            each seller in trade.sellers
+                            each buyer in trade.buyers
                                 tr
-                                    td(scope="col") #{seller.name}
-                                    td(scope="col") #{seller.min_amount}
-                                    td(scope="col") #{seller.bank_name}
-                                    td(scope="col") #{seller.exchange_rate_to_bsf}
+                                    td(scope="col") #{buyer.name}
+                                    td(scope="col") #{buyer.min_amount}
+                                    td(scope="col") #{buyer.bank_name}
+                                    td(scope="col") #{buyer.exchange_rate_to_bsf}
                                     td(scope="col") 
-                                        a(class="btn btn-success" href=`${seller.public_view}`) Hacer venta...
+                                        a(class="btn btn-success" href=`${buyer.public_view}`) Hacer venta...
                                     
 
 
