@@ -20,7 +20,7 @@ html(lang="en")
                                 td #{trade.seller.min_amount}
                                 td #{trade.seller.bank_name}
                                 td 
-                                        a(class="btn btn-warning" href=`${trade.seller.link}`) Hacer Compra...
+                                        a(class="btn btn-warning" href=`${trade.seller.public_view}`) Hacer Compra...
                     div(class="collapse" id=`collapseExample${trade.id}`)
                         table(class='table table-responsive-sm table-striped')
                             th Comprador
@@ -35,7 +35,7 @@ html(lang="en")
                                     td(scope="col") #{buyer.bank_name}
                                     td(scope="col") #{buyer.exchange_rate_to_bsf}
                                     td(scope="col") 
-                                        a(class="btn btn-success" href=`${buyer.link}`) Hacer venta...
+                                        a(class="btn btn-success" href=`${buyer.public_view}`) Hacer venta...
                                     
 
 
