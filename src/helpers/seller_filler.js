@@ -1,10 +1,15 @@
 //listo
 
 module.exports = function (adv_sell) {
-  let link = adv_sell.actions.public_view;
-  let { username } = { ...adv_sell.data.profile };
-  let { trade_count, feedback_score, bank_name, min_amount } = {
-    ...adv_sell.data,
+  let {
+    username,
+    trade_count,
+    feedback_score,
+    bank_name,
+    min_amount,
+    public_view,
+  } = {
+    ...adv_sell,
   };
   return {
     username,
@@ -12,10 +17,6 @@ module.exports = function (adv_sell) {
     feedback_score,
     bank_name,
     min_amount,
-    link,
+    public_view,
   };
 };
-// new Intl.NumberFormat('co-CO', {
-//   style: 'currency',
-//   currency: 'COP',
-// }).format(adv_sell.data.min_amount),
