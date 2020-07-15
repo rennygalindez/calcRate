@@ -1,20 +1,18 @@
-const possible = require('../helpers/is_possible_trade');
+const is_possible_trade = require('../helpers/is_possible_trade');
 const sellerFiller = require('./seller_filler');
 const buyerFiller = require('./buyer_filler');
 const cop_to_bsf_rate = require('../helpers/get_exchance_rate_cop_to_bsf.js');
+const cleanAdvs = require('../helpers/clean_advs');
 
 module.exports = function exchange_calc(advs_sell, advs_buy, xbx_price) {
   try {
+    let [cleaned_advs_sell, cleaned_advs_buy] = cleanAdvs(advs_sell, advs_buy);
     let trades = [];
     let id = 1;
-    advs_sell.forEach((adv_sell) => {
-      if (adv_sell.data['temp_price'] === adv_sell.data['temp_price_usd'])
-        return; // Jump the iteration because the will wrong!
+    cleaned_advs_sell.forEach((adv_sell) => {
       const trade = { id, buyers: [] };
       trade['seller'] = sellerFiller(adv_sell);
-      advs_buy.forEach((adv_buy) => {
-        if (adv_buy.data['temp_price'] === adv_buy.data['temp_price_usd'])
-          return; // Jump the iteration because the will wrong!
+      cleaned_advs_buy.forEach((adv_buy) => {
         let exchange_rate_to_bsf = cop_to_bsf_rate(
           adv_sell,
           adv_buy,
