@@ -13,7 +13,6 @@ module.exports = function () {
   dirtyAdvs.forEach((e) => {
     cleanedAdvs.push(cleanAndFusion(e));
   });
-  console.log(cleanedAdvs);
   return cleanedAdvs;
 };
 

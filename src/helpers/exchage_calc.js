@@ -1,12 +1,20 @@
-const is_possible_trade = require('../helpers/is_possible_trade');
 const sellerFiller = require('./seller_filler');
 const buyerFiller = require('./buyer_filler');
 const cop_to_bsf_rate = require('../helpers/get_exchance_rate_cop_to_bsf.js');
 const cleanAdvs = require('../helpers/clean_advs');
 
-module.exports = function exchange_calc(advs_sell, advs_buy, xbx_price) {
+module.exports = function exchange_calc(
+  advs_sell,
+  advs_buy,
+  xbx_price,
+  myAmount
+) {
   try {
     let [cleaned_advs_sell, cleaned_advs_buy] = cleanAdvs(advs_sell, advs_buy);
+    cleaned_advs_sell = cleaned_advs_sell.filter(
+      (e) => parseInt(myAmount) >= parseInt(e.min_amount)
+    ); // TODO - I want to include this filter inside cleanAdvs function.
+
     let trades = [];
     let id = 1;
     cleaned_advs_sell.forEach((adv_sell) => {
@@ -28,8 +36,3 @@ module.exports = function exchange_calc(advs_sell, advs_buy, xbx_price) {
     console.log(error);
   }
 };
-
-//if (!possible.is_possible_trade(500000, adv_buy, advs_buy)) return;
-//   let filtered_advs_sell = advs_sell.filter(
-// (elements) => elements.data.min_amount <= 500000
-// );

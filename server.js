@@ -9,6 +9,10 @@ app.set('PORT', process.env.PORT || 3000);
 app.set('views', patch.join(__dirname, 'src', 'views'));
 app.set('view engine', 'pug');
 
+
+//Middlewares
+app.use(express.urlencoded())
+
 //Routes
 
 app.use(require('./src/routes/trades_routes'));
