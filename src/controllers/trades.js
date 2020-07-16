@@ -3,11 +3,10 @@ const getRates = require('../helpers/get_base_rates');
 const ratesCalc = require('../helpers/exchage_calc.js');
 
 module.exports = {
-  // Asynchronous handler controller function
-
   new: (req, res) => {
     res.render('trades/new');
   },
+  // Asynchronous handler controller function
   processNew: async (req, res) => {
     try {
       let { myAmount } = { ...req.body };

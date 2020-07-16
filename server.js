@@ -1,17 +1,16 @@
 const express = require('express');
 const app = express();
-const patch = require('path');
 const pug = require('pug');
-
+const path = require('path');
 //Settings
 
 app.set('PORT', process.env.PORT || 3000);
-app.set('views', patch.join(__dirname, 'src', 'views'));
+app.set('views', path.join(__dirname, 'src', 'views'));
 app.set('view engine', 'pug');
 
-
 //Middlewares
-app.use(express.urlencoded())
+app.use(express.urlencoded());
+app.use(express.static(path.join(__dirname, 'src', 'public')));
 
 //Routes
 
