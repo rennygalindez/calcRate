@@ -15,6 +15,9 @@ app.use(express.static(path.join(__dirname, 'src', 'public')));
 //Routes
 
 app.use(require('./src/routes/trades_routes'));
+app.use(require('./src/routes/index_routes'));
+
+
 
 //Server running
 
