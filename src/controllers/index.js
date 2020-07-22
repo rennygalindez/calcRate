@@ -1,3 +1,5 @@
+// To declare index routes.
+
 //
 
 module.exports = {
