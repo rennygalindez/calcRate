@@ -2,6 +2,7 @@
 
 module.exports = {
   showIndex: function (req, res) {
-    res.redirect('/trades');
+    res.render('various/index');
+  
   },
 };
