@@ -1,0 +1,192 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.base-page {
+  width: 360px;
+  padding: 7% 0 0;
+  margin: auto;
+}
+.form {
+  position: relative;
+  z-index: 1;
+  background: #40404f;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  border-radius: 10%;
+}
+
+input[type='text'],
+input[type='password'],
+input[type='email'],
+input[type='tel'],
+select,
+textarea {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  background: #40404f;
+  border-radius: 10px;
+  border: none;
+  border: solid 2px #8dcca9;
+  color: #fff;
+  display: block;
+  outline: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  text-decoration: none;
+  width: 100%;
+}
+
+input[type='text']:invalid,
+input[type='password']:invalid,
+input[type='email']:invalid,
+input[type='tel']:invalid,
+select:invalid,
+textarea:invalid {
+  box-shadow: none;
+}
+
+input[type='text']:focus,
+input[type='password']:focus,
+input[type='email']:focus,
+input[type='tel']:focus,
+select:focus,
+textarea:focus {
+  border-color: #4bae77;
+  box-shadow: 0 0 0 1px #4bae77;
+}
+
+/* .form input {
+  font-family: 'Roboto', sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+} */
+
+input[type='submit'],
+input[type='reset'],
+input[type='button'],
+button,
+.button {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  background-color: transparent;
+  box-shadow: inset 0 0 0 3px #6cc091;
+  color: #6cc091 !important;
+  border-radius: 30px;
+  border: 0;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.75em;
+  font-weight: 400;
+  height: 3.75em;
+  line-height: 3.85em;
+  letter-spacing: 2px;
+  padding: 0 4em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+input[type='submit']:hover,
+input[type='reset']:hover,
+input[type='button']:hover,
+button:hover,
+.button:hover {
+  background-color: rgba(108, 192, 145, 0.15);
+}
+
+input[type='submit']:active,
+input[type='reset']:active,
+input[type='button']:active,
+button:active,
+.button:active {
+  background-color: rgba(108, 192, 145, 0.15);
+}
+
+/* .form button {
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #6cc091;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #ffffff;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.form button:hover,
+.form button:active,
+.form button:focus {
+  background: #43a047;
+} */
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+.form .message a {
+  color: #6cc091;
+  text-decoration: none;
+}
+.form .register-form {
+  display: none;
+}
+.container-form {
+  position: relative;
+  z-index: 1;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.container:before,
+.container:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.container .info {
+  margin: 50px auto;
+  text-align: center;
+}
+.container .info h1 {
+  margin: 0 0 15px;
+  padding: 0;
+  font-size: 36px;
+  font-weight: 300;
+  color: #1a1a1a;
+}
+.container .info span {
+  color: #4d4d4d;
+  font-size: 12px;
+}
+.container .info span a {
+  color: #000000;
+  text-decoration: none;
+}
+.container .info span .fa {
+  color: #ef3b3a;
+}
+body {
+  background: #40404f; /* fallback for old browsers */
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

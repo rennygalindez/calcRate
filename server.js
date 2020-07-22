@@ -22,5 +22,5 @@ app.use(require('./src/routes/index_routes'));
 //Server running
 
 app.listen(app.get('PORT'), '0.0.0.0', () =>
-  console.log(`server running on port ${app.get('PORT')}`)
+  console.log(`server running on port ${app.get('PORT')}`),
 );
