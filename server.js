@@ -37,6 +37,8 @@ app.use(passport.session());
 
 app.use(require('./src/routes/trades_routes'));
 app.use(require('./src/routes/index_routes'));
+app.use(require('./src/routes/users_routes'));
+app.use(require('./src/routes/sessions_routes'));
 
 //Server running
 
