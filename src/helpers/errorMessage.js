@@ -3,5 +3,8 @@
 //
 
 module.exports = function (error, filename) {
-  console.log(`Somethng was wrong in ${filename}, error description: ${error}`);
+  console.log(
+    `%c Somethng was wrong in ${filename}, error description: ${error}`,
+    'color:6cc091',
+  );
 };
