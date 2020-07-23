@@ -10,10 +10,15 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     async comparePassword(password) {
-      user = this;
+      let user = this;
       let areSame = bcrypt.compare(password, user.password);
       return areSame;
     }
+    static async findByEmail(email) {
+      let [user] = await this.findAll({ where: { email } });
+      return user;
+    }
+
     static associate(models) {
       // define association here
     }
