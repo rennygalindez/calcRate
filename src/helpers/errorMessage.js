@@ -4,7 +4,8 @@
 
 module.exports = function (error, filename) {
   console.log(
-    `%c Somethng was wrong in ${filename}, error description: ${error}`,
-    'color:6cc091',
+    '\x1b[31m',
+    `Something was wrong in ${filename}, error description: ${error}`,
   );
+  return 1;
 };
